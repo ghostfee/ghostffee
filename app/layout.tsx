@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Source_Serif_4, IBM_Plex_Mono } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -36,7 +38,11 @@ export default function RootLayout({
       lang="es"
       className={`${spaceGrotesk.variable} ${sourceSerif.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#0F172A] text-[#F1F5F9]">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#0F172A] text-[#F1F5F9]">
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
