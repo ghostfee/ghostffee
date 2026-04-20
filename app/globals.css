@@ -1,23 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  /* Superficie */
-  --site-bg:         #0F172A;
-  --panel-bg:        #1E293B;
-  --border:          #334155;
+  /* Superficie (tema claro) */
+  --site-bg:         #f0f4ff;
+  --panel-bg:        #ffffff;
+  --border:          #e5e7eb;
 
   /* Texto */
-  --text-primary:    #F1F5F9;
-  --text-secondary:  #94A3B8;
+  --text-primary:    #111827;
+  --text-secondary:  #4b5563;
 
   /* Acentos */
-  --accent:          #22D3EE;
-  --warning:         #FBBF24;
-  --error:           #F87171;
+  --accent:          #4f46e5;
+  --accent-light:    #6366f1;
+  --warning:         #f97316;
+  --error:           #ef4444;
 
   /* Modo grabación */
   --record-white:    #FFFFFF;
   --record-chroma:   #00FF00;
+
+  /* Sistema global de animaciones para simulaciones */
+  --sim-ease-standard: ease;
+  --sim-ease-out: ease-out;
+  --sim-duration-fast: 0.25s;
+  --sim-duration-enter: 0.4s;
+  --sim-duration-pulse: 0.5s;
+  --sim-duration-hide: 0.8s;
+  --sim-duration-celebration: 1s;
 
   /* Alias usados por Tailwind @theme */
   --background: var(--site-bg);
@@ -39,7 +49,148 @@
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(circle at top, #f5f7ff 0%, #e8f4ff 45%, #fef7f1 100%) fixed;
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-source-serif), Georgia, serif;
+  min-height: 100vh;
+}
+
+/* Utilidades globales reutilizables para futuras simulaciones */
+.sim-panel-surface {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 22px 24px;
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.14);
+}
+
+.sim-fixed-row {
+  min-height: 70px;
+}
+
+.sim-button-pill {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  transition: transform var(--sim-duration-fast) var(--sim-ease-standard),
+    box-shadow var(--sim-duration-fast) var(--sim-ease-standard),
+    background var(--sim-duration-fast) var(--sim-ease-standard);
+}
+
+/* Keyframes globales: base para todas las simulaciones */
+@keyframes sim-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sim-celebration {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sim-wrong-shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes sim-wrong-glow {
+  0% {
+    box-shadow: 0 10px 20px rgba(248, 113, 113, 0);
+  }
+  50% {
+    box-shadow: 0 16px 30px rgba(248, 113, 113, 0.9);
+  }
+  100% {
+    box-shadow: 0 10px 20px rgba(248, 113, 113, 0);
+  }
+}
+
+@keyframes sim-box-hiding {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.08);
+  }
+  70% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sim-box-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes sim-coin-hide {
+  0% {
+    transform: translateY(-140%) scale(1);
+    opacity: 0;
+  }
+  35% {
+    transform: translateY(-30%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(40%) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes sim-confetti-fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotateZ(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 120vh, 0) rotateZ(360deg);
+    opacity: 0;
+  }
 }

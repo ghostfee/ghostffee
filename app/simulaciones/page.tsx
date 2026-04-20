@@ -3,18 +3,25 @@ import { SectionShell } from "@/components/section-shell";
 
 const simulations = [
   {
+    title: "Pick a Box",
+    status: "disponible",
+    href: "/simulaciones/pick-a-box",
+    description:
+      "Encuentra la moneda escondida con el mínimo de preguntas. Compara búsqueda lineal vs. búsqueda binaria.",
+  },
+  {
     title: "Laboratorio de enteros con signo",
-    status: "siguiente implementacion",
+    status: "en desarrollo",
     href: "/simulaciones/enteros-con-signo",
     description:
-      "La primera simulacion real del sitio: un mismo patron de bits interpretado en varios esquemas.",
+      "Un mismo patrón de bits interpretado en signo-magnitud, complemento a 1, complemento a 2 y sesgo.",
   },
   {
     title: "Coma flotante simplificada",
-    status: "placeholder",
+    status: "próximamente",
     href: "/simulaciones",
     description:
-      "Mantisa, exponente sesgado y normalizacion con una vista preparada para reutilizar el mismo estilo visual.",
+      "Mantisa, exponente sesgado y normalización con una vista preparada para reutilizar el mismo estilo visual.",
   },
 ];
 
@@ -30,15 +37,15 @@ export default function SimulationsPage() {
           <Link
             key={simulation.title}
             href={simulation.href}
-            className="rounded-[24px] border border-border bg-panel p-6"
+            className="rounded-[24px] border border-[#e5e7eb] bg-white p-6 shadow-[0_16px_34px_rgba(15,23,42,0.10)] transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.16)]"
           >
-            <p className="font-sans text-xs uppercase tracking-[0.24em] text-warning">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-[#f97316]">
               {simulation.status}
             </p>
-            <h2 className="mt-3 font-sans text-3xl font-semibold text-foreground">
+            <h2 className="mt-3 font-sans text-3xl font-semibold text-[#111827]">
               {simulation.title}
             </h2>
-            <p className="mt-3 text-base leading-7 text-[color:var(--text-secondary)]">
+            <p className="mt-3 text-base leading-7 text-[#4b5563]">
               {simulation.description}
             </p>
           </Link>

@@ -5,19 +5,20 @@
  */
 
 export const colors = {
-  // Superficie del sitio
-  siteBg:        "#0F172A", // slate-900
-  panelBg:       "#1E293B", // slate-800
-  border:        "#334155", // slate-700
+  // Superficie del sitio (tema claro)
+  siteBg:        "#f0f4ff", // fondo general suave
+  panelBg:       "#ffffff", // tarjetas y paneles blancos
+  border:        "#e5e7eb", // gray-200
 
   // Texto
-  textPrimary:   "#F1F5F9", // slate-100
-  textSecondary: "#94A3B8", // slate-400
+  textPrimary:   "#111827", // gray-900
+  textSecondary: "#4b5563", // gray-600
 
   // Acentos funcionales
-  accent:        "#22D3EE", // cian-400  — estado activo
-  warning:       "#FBBF24", // amber-400 — rangos / advertencias
-  error:         "#F87171", // red-400   — errores / NaN
+  accent:        "#4f46e5", // indigo-600 — principal
+  accentLight:   "#6366f1", // indigo-500 — hover / gradiente
+  warning:       "#f97316", // orange-500 — moneda / highlight
+  error:         "#ef4444", // red-500    — errores / NO
 
   // Modo grabación — fondos planos del panel
   recordWhite:   "#FFFFFF",
